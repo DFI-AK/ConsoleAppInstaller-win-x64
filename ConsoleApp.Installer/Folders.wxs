@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+
+		<!--======Start program========-->
+		<Directory Id="ProgramData">
+			<Directory Id="InstallProgramData" Name="!(loc.ProductNameFolder)"/>
+		</Directory>
+
+		<!--=========Define the folder based on the system architecture==========-->
+		<?if $(var.Platform)=x64?>
+		<!--=====For 64bit folder=====-->
+		<StandardDirectory Id="ProgramFiles64Folder">
+			<Directory Id="INSTALLFOLDER" Name="!(loc.ProductNameFolder)" />
+		</StandardDirectory>
+		<?else?>
+		<!--=====For 32bit folder=====-->
+		<StandardDirectory Id="ProgramFilesFolder">
+			<Directory Id="INSTALLFOLDER" Name="!(loc.ProductNameFolder)" />
+		</StandardDirectory>
+		<?endif?>
+	</Fragment>
+</Wix>

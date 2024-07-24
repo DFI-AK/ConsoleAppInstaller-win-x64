@@ -1,0 +1,28 @@
+﻿<Project Sdk="WixToolset.Sdk/5.0.1">
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+		<DefineConstants>Debug</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+		<Content Include="assets\Background.bmp" />
+		<Content Include="assets\Banner.bmp" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="assets\app.ico" />
+		<None Include="assets\License.rtf" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="WixToolset.UI.wixext" Version="5.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\InstallerDemo01\InstallerDemo01.csproj" />
+	</ItemGroup>
+
+	<Target Name="BeforeBuild">
+		<Exec Command="dotnet publish ..\InstallerDemo01\InstallerDemo01.csproj -c $(Configuration) -r win-$(Platform) --self-contained -o ..\InstallerDemo\bin\$(Configuration)\net8.0\publish\win-$(Platform)\"/>
+		<GetAssemblyIdentity
+			AssemblyFile="..\InstallerDemo01\bin\$(Configuration)\net8.0\publish\win-$(Platform)\InstallerDemo01.dll">
+			<Output TaskParameter="Assemblies" ItemName="AssemblyVersion"></Output>
+		</GetAssemblyIdentity>
+	</Target>
+
+</Project>

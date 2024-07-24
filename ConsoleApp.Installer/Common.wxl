@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+	<String Id="ProductNameFolder" Value="AyushConsoleApp" />
+
+	<String Id="ProductName_x64" Value="Ayush Console App (64bit)" />
+	<String Id="ProductName_x86" Value="Ayush Console App (32bit)" />
+	<String Id="Company" Value="Defacto Infotech" />
+	<String Id="Language_en" Value="1033" />
+	<String Id="DowngradeErrorMessage" Value="A newer version of Ayush Console App is already installed." />
+</WixLocalization>

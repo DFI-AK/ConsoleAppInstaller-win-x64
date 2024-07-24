@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<ComponentRef Id="TestFile"/>
+		</ComponentGroup>
+
+		<DirectoryRef Id="INSTALLFOLDER" FileSource="..\InstallerDemo01\bin\$(var.Configuration)\net8.0\win-$(var.Platform)\">
+			<Component Id="TestFile" Guid="{6D57E8E7-9DF8-48D8-8258-4D2D2F3C3A23}">
+				<File Id="FileTestFile" Name="InstallerDemo01.exe" KeyPath="yes"/>
+				<RemoveFile Id="RemoveProgramData" Name="ProgramData" On="uninstall"></RemoveFile>
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>
